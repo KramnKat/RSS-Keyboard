@@ -1,9 +1,9 @@
 import Key from './key.js'
 
-function handler(e, textarea) {
+function handler(keycode, value, textarea) {
 	const textField = textarea
 	let pos = textField.dataset.position 
-	switch(e.target.dataset.keycode) {
+	switch(keycode) {
 		case 'Space': 
 		textField.value = `${textField.value.slice(0, pos
 			)}${' '}${textField.value.slice(pos)}`
@@ -46,12 +46,12 @@ function handler(e, textarea) {
 		break
 		default:
 		textField.value = `${textField.value.slice(0, pos)}${
-			e.target.innerText
+			value
 		}${textField.value.slice(pos)}`
 		textField.dataset.position = 	+textField.dataset.position + 1
 }
 }
-
+// генерация клавиатуры 
 export default (keyboardLang, textarea) => {
 	const keyboard = document.createElement('div')
 	keyboard.classList.add('keyboard')
@@ -69,7 +69,27 @@ export default (keyboardLang, textarea) => {
 
 	keyboard.addEventListener('click', (event) => {
 		if(event.target.dataset.keycode) {
-			handler(event, textarea)
+			const keycode = event.target.dataset.keycode
+			const value = event.target.innerText
+			handler(keycode, value, textarea)
+		}
+	})
+
+	window.addEventListener('keydown', (event) => {
+		event.preventDefault()
+		const key = document.querySelector(`[data-keycode=${event.code}]`)
+		if(key) {
+			key.classList.add('active')
+			const keycode = key.dataset.keycode
+			const value = key.innerText
+			handler(keycode, value, textarea)
+		}
+	})
+
+	window.addEventListener('keyup', (event) => {
+		const key = document.querySelector(`[data-keycode=${event.code}]`)
+		if(key) {
+			key.classList.remove('active')
 		}
 	})
 

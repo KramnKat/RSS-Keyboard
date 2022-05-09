@@ -74,6 +74,7 @@ body.body--night-theme {
 	background-color: var(--keyboard-color-night-theme);
 	box-shadow: 0 0 10px rgba(249, 248, 248, 0.5);
 	transition: 0.6s;
+	color: var(--main-color);
 }
 
 .keyboard {
@@ -130,6 +131,13 @@ background-color: rgb(238, 234, 234) ;
 }
 
 .keyboard__key:active {
+background-color: rgba(0, 0, 0, 0.2);
+color: white;
+transform: scale(0.97);
+box-shadow: inset;
+}
+
+.keyboard__key.active {
 background-color: rgba(0, 0, 0, 0.2);
 color: white;
 transform: scale(0.97);

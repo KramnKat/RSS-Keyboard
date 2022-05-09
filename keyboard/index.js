@@ -1,9 +1,6 @@
-import languages from './languages.js'
-import keyBoardContainer from './keyBoardContainer.js'
-keyBoardContainer()
+import languages from './languages.js';
+import keyBoardContainer from './keyBoardContainer.js';
 
-const body = document.querySelector('body')
-const nigthTheme = document.querySelector('.night__theme')
+const enKeyboard = languages.en;
 
-const ruKeyboard = languages.ru
-const enKeyboard = languages.en
+keyBoardContainer(enKeyboard);

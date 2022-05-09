@@ -60,6 +60,7 @@ body.body--night-theme {
 	outline: none;
 	background-color: var(--keyboard-color);
 	padding: 10px;
+	resize: none;
 }
 
 .keyboard {

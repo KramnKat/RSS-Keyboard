@@ -8,6 +8,7 @@ constructor({small, shift, code}) {
 	generateKey() {
 		const key = document.createElement('button')
 		key.classList.add('keyboard__key')
+		key.dataset.keycode = this.code
 
 		switch(this.code) {
 			case 'Space': 

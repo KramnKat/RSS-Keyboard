@@ -1,10 +1,20 @@
 import Key from './key.js'
 
-function handler(e) {
-	switch(this.code) {
+function handler(e, textarea) {
+	const textField = textarea
+	let pos = textField.dataset.position 
+	switch(e.target.dataset.keycode) {
 		case 'Space': 
+		textField.value = `${textField.value.slice(0, pos
+			)}${' '}${textField.value.slice(pos)}`
+		textField.dataset.position = 	+textField.dataset.position + 1
 		break
 		case 'Backspace': 
+		textField.value = `${textField.value.slice(
+			0, pos - 1
+		 )}${textField.value.slice(pos)}`
+		 textField.dataset.position =
+		 textField.dataset.position > 0 ? +textField.dataset.position - 1 : 0
 		break
 		case 'Tab': 
 		break
@@ -35,10 +45,14 @@ function handler(e) {
 		case 'AltRight': 
 		break
 		default:
+		textField.value = `${textField.value.slice(0, pos)}${
+			e.target.innerText
+		}${textField.value.slice(pos)}`
+		textField.dataset.position = 	+textField.dataset.position + 1
 }
 }
 
-export default (keyboardLang) => {
+export default (keyboardLang, textarea) => {
 	const keyboard = document.createElement('div')
 	keyboard.classList.add('keyboard')
 
@@ -54,7 +68,9 @@ export default (keyboardLang) => {
 	});
 
 	keyboard.addEventListener('click', (event) => {
-		handler(event)
+		if(event.target.dataset.keycode) {
+			handler(event, textarea)
+		}
 	})
 
 	return keyboard

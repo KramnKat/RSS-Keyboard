@@ -3,7 +3,8 @@
 :root {
 --main-color:  #dcefe7;
 --keyboard-color: #b6e5d1;
---night-theme: rgb(9, 9, 79);
+--night-theme: rgb(57, 57, 98);
+--keyboard-color-night-theme: rgb(136, 136, 187);
 
 }
 
@@ -22,9 +23,12 @@ body {
 	font-size: 20px;
 	line-height: 130%;
 	background-color: var(--main-color);
+	transition: 0.6s;
 }
 body.body--night-theme {
 	background-color: var(--night-theme);
+	color: var(--main-color);
+	transition: 0.6s;
 }
 
 .container {
@@ -62,18 +66,34 @@ body.body--night-theme {
 	padding: 10px;
 	resize: none;
 	border-radius: 5px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+	transition: 0.6s;
+}
+
+.text.night--theme {
+	background-color: var(--keyboard-color-night-theme);
+	box-shadow: 0 0 10px rgba(249, 248, 248, 0.5);
+	transition: 0.6s;
 }
 
 .keyboard {
 	max-width: 1008px;
 	width: 100%;
 	background-color: var(--keyboard-color);
-	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 45px rgba(0, 0, 0, 0.5);
 	user-select: none;
 	transition: bottom .4s;
 	padding: 5px;
 	margin: 0 auto;
 	margin-bottom: 30px;	
+	border-radius: 2px;
+	transition: 0.6s;
+}
+
+.keyboard.night--theme {
+	background-color: var(--keyboard-color-night-theme);
+	box-shadow: 0 0 45px rgba(249, 248, 248, 0.4);
+	transition: 0.6s;
 }
 
 .keyboard--hidden {
